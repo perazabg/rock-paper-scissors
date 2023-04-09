@@ -10,8 +10,15 @@ function getComputerChoice(){
     }
     
     return cpuChoice;
-  }
+}
   
+  function playRound(playerSelection, cpuSelection){
+    cpuSelection = getComputerChoice();
+    let result
+    if(playerSelection == "rock" && cpuSelection == "rock"){
+      result = "Tie!"
+    } else if()
+  }
 
   
   
