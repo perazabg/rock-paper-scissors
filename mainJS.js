@@ -1,45 +1,49 @@
-function getComputerChoice(){
-  let cpuChoice
-  randNum = Math.floor(Math.random()*3)+1
-  if(randNum == 1){
-    cpuChoice = "rock";
-  } else if(randNum == 2){
-    cpuChoice = "paper";
-  } else if(randNum == 3){
-    cpuChoice = "scissors";
-  }
-  return cpuChoice;
+let playerScore = 0;
+let computerScore = 0;
+
+// Function to get the computer's choice for the round
+function getComputerChoice() {
+  const choices = ['rock', 'paper', 'scissors'];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
 }
-  
-function playRound(playerSelection, cpuSelection){
-  cpuSelection = getComputerChoice();
-  let result
-  let pSelection = playerSelection.toLowerCase();
-  if(pSelection == "rock" && cpuSelection == "rock"){
-    result = "Tie!"
-  } else if(pSelection == "rock" && cpuSelection == "paper"){
-    result = "Paper beats Rock, You Lose!"
-  } else if(pSelection == "rock" && cpuSelection == "scissors"){
-    result = "Rock beats Scissors, You Win!"
-  } else if(pSelection == "paper" && cpuSelection == "rock"){
-    result = "Paper beats Rock, You Win!"
-  } else if(pSelection == "paper" && cpuSelection == "paper"){
-    result = "Tie!"
-  } else if(pSelection == "paper" && cpuSelection == "scissors"){
-    result = "Paper beats Rock, You Lose!"
-  } else if(pSelection == "scissors" && cpuSelection == "rock"){
-    result = "Rock beats Scissors, You Lose!"
-  } else if(pSelection == "scissors" && cpuSelection == "paper"){
-    result = "Scissors beats Paper, You Win!"
-  } else if(pSelection == "scissors" && cpuSelection == "scissors"){
-    result = "Tie"
+
+// Function to play a round of the game
+function playRound() {
+  const playerSelection = prompt("Type in your selection (Rock, Paper, or Scissors): ").toLowerCase();
+  const computerSelection = getComputerChoice();
+  let result;
+
+  if (playerSelection === computerSelection) {
+    result = "Tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    result = "You win!";
+    playerScore++;
+  } else {
+    result = "You lose!";
+    computerScore++;
   }
-  return result;
+
+  console.log(result);
+  console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+
+  checkWin();
 }
-  
-function game(){
-  for(i=0; i<5; i++){
-    let userInput = prompt("Type in your selection (Rock, Paper, or Scissors): ")
+
+// Function to check if a player has reached the winning score
+function checkWin() {
+  if (playerScore === 5) {
+    console.log("CPU defeated! You win!");
+  } else if (computerScore === 5) {
+    console.log("You lose! Game over!");
+  } else {
     playRound();
   }
-}  
+}
+
+// Start the game
+playRound();
