@@ -31,7 +31,7 @@ function playRound() {
   console.log(result);
   console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
 
-  checkWin();
+  //checkWin();
 }
 
 // Function to check if a player has reached the winning score
@@ -46,4 +46,4 @@ function checkWin() {
 }
 
 // Start the game
-playRound();
+//playRound();
