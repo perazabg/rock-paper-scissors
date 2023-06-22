@@ -9,8 +9,8 @@ function getComputerChoice() {
 }
 
 // Function to play a round of the game
-function playRound() {
-  const playerSelection = prompt("Type in your selection (Rock, Paper, or Scissors): ").toLowerCase();
+function playRound(playerSelection) {
+  
   const computerSelection = getComputerChoice();
   let result;
 
@@ -28,22 +28,58 @@ function playRound() {
     computerScore++;
   }
 
-  console.log(result);
-  console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
-
-  //checkWin();
+  //console.log(result);
+  //console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+  updateScore(playerScore, computerScore, result);
+  checkWin();
 }
 
+function updateScore(playerScore, computerScore, roundResult){
+  const pScore = document.getElementById('player-score');
+  const cpuScore = document.getElementById('computer-score');
+  const result = document.getElementById('result');
+  
+  pScore.innerHTML = playerScore;
+  cpuScore.innerHTML = computerScore;
+  result.innerHTML = roundResult;
+}
 // Function to check if a player has reached the winning score
 function checkWin() {
   if (playerScore === 5) {
-    console.log("CPU defeated! You win!");
+    //console.log("CPU defeated! You win!");
+    return endGame(); 
   } else if (computerScore === 5) {
-    console.log("You lose! Game over!");
-  } else {
-    playRound();
+    //console.log("You lose! Game over!");
+    return endGame(); 
   }
 }
 
-// Start the game
-//playRound();
+// removes the buttons at the end of the game and adds option to restart game
+function endGame(){
+  rockBtn.remove();
+  paperBtn.remove();
+  scissorsBtn.remove();
+  
+  const scoreContainer = document.getElementById('scoreContainer');
+  
+  const endMsg = document.createElement('p');
+  endMsg.classList.add('endMsg');
+  endMsg.textContent = 'Refresh the page to play again!'
+  scoreContainer.appendChild(endMsg);
+  // gonna need to be surrounded by container and added  
+  
+}
+
+// start of game
+const rockBtn = document.getElementById('rock');
+const paperBtn = document.getElementById('paper');
+const scissorsBtn = document.getElementById('scissors');
+
+function btnHandler(event){
+  const playerSelection = event.target.innerHTML;
+  playRound(playerSelection);
+}
+
+rockBtn.addEventListener('click', btnHandler);
+paperBtn.addEventListener('click', btnHandler);
+scissorsBtn.addEventListener('click', btnHandler);
