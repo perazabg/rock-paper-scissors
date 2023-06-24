@@ -70,7 +70,7 @@ function endGame(){
   scoreContainer.appendChild(endMsg);
   
   endMsg.addEventListener('click', e => {
-    location.reload();
+    history.go(0); // restarts the webpage on click
   });
  
   
