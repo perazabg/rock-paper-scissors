@@ -34,6 +34,7 @@ function playRound(playerSelection) {
   checkWin();
 }
 
+// this function updates the score displayed on the screen
 function updateScore(playerScore, computerScore, roundResult){
   const pScore = document.getElementById('player-score');
   const cpuScore = document.getElementById('computer-score');
@@ -62,11 +63,16 @@ function endGame(){
   
   const scoreContainer = document.getElementById('scoreContainer');
   
-  const endMsg = document.createElement('p');
+  const endMsg = document.createElement('button');
   endMsg.classList.add('endMsg');
-  endMsg.textContent = 'Refresh the page to play again!'
+  endMsg.setAttribute('id', 'restartBtn');
+  endMsg.textContent = 'Click to play again!'
   scoreContainer.appendChild(endMsg);
-  // gonna need to be surrounded by container and added  
+  
+  endMsg.addEventListener('click', e => {
+    location.reload();
+  });
+ 
   
 }
 
@@ -82,4 +88,4 @@ function btnHandler(event){
 
 rockBtn.addEventListener('click', btnHandler);
 paperBtn.addEventListener('click', btnHandler);
-scissorsBtn.addEventListener('click', btnHandler);
+scissorsBtn.addEventListener('click', btnHandler); 
