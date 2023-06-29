@@ -10,6 +10,8 @@ function getComputerChoice() {
 
 // Function to play a round of the game
 function playRound(playerSelection) {
+  const pSelectionImg = document.getElementById('pImg');
+  const cpuSelectionImg = document.getElementById('cpuImg');
   
   const computerSelection = getComputerChoice();
   let result;
@@ -30,6 +32,8 @@ function playRound(playerSelection) {
 
   //console.log(result);
   //console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+  pSelectionImg.textContent = playerSelection;
+  cpuSelectionImg.textContent = computerSelection;
   updateScore(playerScore, computerScore, result);
   checkWin();
 }
@@ -70,7 +74,7 @@ function endGame(){
   scoreContainer.appendChild(endMsg);
   
   endMsg.addEventListener('click', e => {
-    history.go(0); // restarts the webpage on click
+    history.go(0);
   });
  
   

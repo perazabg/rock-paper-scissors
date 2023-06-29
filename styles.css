@@ -1,13 +1,40 @@
+*{
+  border: red dashed 1px;
+}
 
-* {
-    border: red dashed 1px;
-  }
+body{
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  background-color: darkgrey;
+}
+
+
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 26px;
+  margin-right: 26px;
+}
+
+.footer{
+  display: flex;
   
+}
+
+.gameContainer{
+  display: flex;
   
-  .body{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+}
+
+.playerSide,
+.cpuSide{
+  display: flex;
   
- 
+}
+
+#player-score, 
+#computer-score{
+  font-size: 64px;
+}

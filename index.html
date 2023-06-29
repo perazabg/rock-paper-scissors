@@ -6,8 +6,9 @@
 </head>
 <body>
   <div class="body">
+    <div class="header">
     <h1>Rock Paper Scissors</h1>
-
+    </div>
     <div id='btnContainer'>
       <button data-choice='rock' id="rock">rock</button>
       <button data-choice='paper' id="paper">paper</button>
@@ -15,20 +16,21 @@
     </div>
     <div class="gameContainer">
       <div class="playerSide">
-        
+        <div class="pSelectionImg" id="pImg"></div>
+        <div id='pScore'><span id="player-score">0</span></div>
       </div>
       <div class="cpuSide">
-        
+        <div id='cpuScore'><span id="computer-score">0</span></div>
+        <div class="cpuSelectionImg" id="cpuImg"></div>
       </div>
     </div>
     <div id="scoreContainer">
-      <div id='pScore'>Player Score: <span id="player-score">0</span></div>
-      <div id='cpuScore'>Computer Score: <span id="computer-score">0</span></div>
       <div id='result'></div>
     </div>
     <div class="footer">
       <p>github.com/perazabg</p>
     </div>
-  </div>  
+    
+  </div>
 </body>
 </html>
